@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2022 at 11:41 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jun 05, 2022 at 02:49 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `beginn_db`
+-- Database: `beginner_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `post` text NOT NULL,
+  `image` varchar(1024) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `post`, `image`, `date`) VALUES
+(1, 2, 'this is my first post', '', '2022-06-05 08:08:48'),
+(2, 2, 'this is a post with an image', 'uploads/pexels-hitesh-choudhary-879109.jpg', '2022-06-05 08:10:16'),
+(3, 2, 'another post with out image', '', '2022-06-05 08:27:33'),
+(4, 2, 'a post with image', 'uploads/452748.jpg', '2022-06-05 08:28:50'),
+(5, 3, 'this is a post from john', '', '2022-06-05 08:37:59'),
+(9, 2, 'uyfvhkbhjkb\r\n\r\n<script>alert(\'hacked\')</script>\r\ndfqfffaefv\r\n\r\n\r\n\r\nqfqdfdfdfqd', '', '2022-06-05 09:08:30');
 
 -- --------------------------------------------------------
 
@@ -41,12 +67,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `date`, `image`) VALUES
-(1, 'joul84', 'joul84@gmail.com', '1234566', '2022-09-15 23:07:02', NULL),
-(2, 'Naomi', 'nom@gmail.com', '654123', '2022-09-15 23:25:56', NULL);
+(2, 'eathorne', 'email@email.com', 'password', '2022-06-05 07:59:14', 'uploads/452771.jpg'),
+(3, 'john', 'john@email.com', 'password', '2022-06-05 08:37:32', 'uploads/791a047636136702e25ba1096b11cfe7.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `date` (`date`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -62,10 +96,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
