@@ -1,2 +1,2 @@
-# my-simple-record-site
-Create profiles saved to localhost database
+#Social Media Site
+Create profiles and users can make posts
